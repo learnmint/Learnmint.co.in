@@ -317,7 +317,63 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            const activeBtn = Array.from(document.querySelectorAll('.nav-btn')).find(btn => btn.textContent.trim() === tabName.charAt(0).toUpperCase() + tabName.slice(1).replace('-', ' '));
+            if (activeBtn) activeBtn.classList.add('active');
+            window.scrollTo(0, 0);
+        }
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const toggle = element.querySelector('.faq-toggle');
+            answer.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw4gYJH8g3hAyVAAMgd3G-ECpg1Y0tKUFLCwI1c5FYRM-o7NxdKLhP0lIHj3ASXImde/exec';
+
+function handleFormSubmit(event) {
+    event.preventDefault();
+
+    const submitBtn = event.target.querySelector('.form-submit');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Submitting...';
+    submitBtn.disabled = true;
+
+    const formData = new FormData(event.target);
+
+    fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        redirect: 'follow',
+        body: formData
+    })
+    .then(() => {
+        document.getElementById('formMessage').innerHTML = '✓ Thank you! Your details have been submitted successfully. We will contact you within 24 hours.';
+        document.getElementById('formMessage').classList.remove('error');
+        document.getElementById('formMessage').classList.add('success');
+        event.target.reset();
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        document.getElementById('formMessage').innerHTML = '⚠ Submission failed. Please try WhatsApp or call us directly.';
+        document.getElementById('formMessage').classList.remove('success');
+        document.getElementById('formMessage').classList.add('error');
+    })
+    .finally(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        setTimeout(() => {
+            document.getElementById('formMessage').innerHTML = '';
+            document.getElementById('formMessage').classList.remove('success', 'error');
+        }, 8000);
+    });
+}
+    </script>
 </body>
 
 
 </html>
+
