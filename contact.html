@@ -112,6 +112,7 @@
 
 
 
+   
     <!-- Contact Start -->
     <div class="container-fluid py-5">
         <div class="container py-5">
@@ -148,32 +149,79 @@
                     </div>
                 </div>
                 <div class="col-lg-7">
-                    <div class="section-title position-relative mb-4">
-                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Need Help?</h6>
-                        <h1 class="display-4">Send Us A Message</h1>
-                    </div>
-                    <div class="contact-form">
-                        <form>
-                            <div class="row">
-                                <div class="col-6 form-group">
-                                    <input type="text" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Your Name" required="required">
-                                </div>
-                                <div class="col-6 form-group">
-                                    <input type="email" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Your Email" required="required">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Subject" required="required">
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control border-top-0 border-right-0 border-left-0 p-0" rows="5" placeholder="Message" required="required"></textarea>
-                            </div>
-                            <div>
-                                <button class="btn btn-primary py-3 px-5" type="submit">Send Message</button>
-                            </div>
-                        </form>
-                    </div>
+    <div class="section-title position-relative mb-4">
+        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Need Help?</h6>
+        <h1 class="display-4">Send Us A Message</h1>
+    </div>
+    <div class="contact-form">
+        <form onsubmit="handleFormSubmit(event)">
+            <div class="row">
+                <div class="col-6 form-group">
+                    <label for="fullname" class="small text-muted mb-1">Full Name *</label>
+                    <input type="text" id="fullname" name="Full Name"
+                           class="form-control border-top-0 border-right-0 border-left-0 p-0"
+                           placeholder="Your Name" required>
                 </div>
+                <div class="col-6 form-group">
+                    <label for="contact" class="small text-muted mb-1">Contact Number *</label>
+                    <input type="tel" id="contact" name="Contact Number"
+                           class="form-control border-top-0 border-right-0 border-left-0 p-0"
+                           placeholder="Your Phone" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6 form-group">
+                    <label for="email" class="small text-muted mb-1">Email Address *</label>
+                    <input type="email" id="email" name="Email Address"
+                           class="form-control border-top-0 border-right-0 border-left-0 p-0"
+                           placeholder="Your Email" required>
+                </div>
+                <div class="col-6 form-group">
+                    <label for="profession" class="small text-muted mb-1">Profession *</label>
+                    <input type="text" id="profession" name="Profession"
+                           class="form-control border-top-0 border-right-0 border-left-0 p-0"
+                           placeholder="Your Profession" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6 form-group">
+                    <label for="city" class="small text-muted mb-1">City *</label>
+                    <input type="text" id="city" name="City"
+                           class="form-control border-top-0 border-right-0 border-left-0 p-0"
+                           placeholder="Your City" required>
+                </div>
+                <div class="col-6 form-group">
+                    <label for="age" class="small text-muted mb-1">Age *</label>
+                    <input type="number" id="age" name="Age"
+                           class="form-control border-top-0 border-right-0 border-left-0 p-0"
+                           placeholder="Your Age" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="course" class="small text-muted mb-1">Course Interested In *</label>
+                <select id="course" name="Course you are interested in"
+                        class="form-control border-top-0 border-right-0 border-left-0 p-0"
+                        required>
+                    <option value="">Select</option>
+                    <option>Dropshipping Mentorship for Launch (3 Months)</option>
+                    <option>Dropshipping Mentorship for Launch & Profitablity (6 Months)</option>
+                    <option>Dropshipping Mentorship for Scalability (12 Months)</option>
+                    <option>Agentic AI (3 Months)</option>
+                    <option>AI Mastery Elite Certification (6 Months)</option>
+                    <option>AI Pinnacle Masters Program</option>
+                </select>
+            </div>
+
+            <div>
+                <button class="btn btn-primary py-3 px-5 form-submit" type="submit">Submit</button>
+            </div>
+            <div class="mt-2 small text-success" id="formMessage"></div>
+        </form>
+    </div>
+</div>
             </div>
         </div>
     </div>
@@ -270,5 +318,6 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>
+
 
 </html>
